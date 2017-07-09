@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test http</title>
+</head>
+<br/>
+<button style="margin-left: 100px;" value="GET" onclick="doGet()">GET</button>
+<button value="POST" onclick="doPost()">POST</button>
+<button value="PUT" onclick="doPut()">PUT</button>
+<button value="DELETE" onclick="doDelete()">DELETE</button>
+
+<script src="/static/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script>
+    var URL = "/test/123456789";
+    function doGet() {
+        $.ajax({
+            url : URL,
+            type : "GET",
+            success : function (data) {
+                alert(data);
+            }
+        });
+    }
+    function doPost() {
+        $.ajax({
+            url : URL,
+            type : "POST",
+            success : function (data) {
+                alert(data);
+            }
+        });
+    }
+    function doPut() {
+        $.ajax({
+            url : URL,
+            type : "PUT",
+            success : function (data) {
+                alert(data);
+            }
+        });
+    }
+    function doDelete() {
+        $.ajax({
+            url : URL,
+            type : "DELETE",
+            success : function (data) {
+                alert(data);
+            }
+        });
+    }
+</script>
+</body>
+</html>

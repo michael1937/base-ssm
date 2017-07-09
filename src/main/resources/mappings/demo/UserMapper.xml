@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kanglefu.modules.demo.mapper.UserMapper">
+
+    <!--<resultMap id="BaseResultMap" type="com.isea533.mybatis.model.Country">-->
+        <!--&lt;!&ndash;-->
+          <!--WARNING - @mbggenerated-->
+        <!--&ndash;&gt;-->
+        <!--<id column="Id" property="id" jdbcType="INTEGER"/>-->
+        <!--<result column="countryname" property="countryname" jdbcType="VARCHAR"/>-->
+        <!--<result column="countrycode" property="countrycode" jdbcType="VARCHAR"/>-->
+    <!--</resultMap>-->
+
+
+    <select id="getUserVoListI" resultType="com.kanglefu.modules.demo.model.vo.UserVo">
+        SELECT u.name,ua.age
+        FROM m_user u
+        LEFT JOIN m_user_age ua ON u.id = ua.user_id
+        <where>
+            <if test="name != null and name != ''">
+                u.name like concat('%',concat(#{name}, '%'))
+            </if>
+        </where>
+    </select>
+</mapper>
