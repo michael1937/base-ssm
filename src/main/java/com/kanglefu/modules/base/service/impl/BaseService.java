@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class BaseService<T> implements IBaseService<T> {
 
     @Autowired
-    protected MyBaseMapper<T> mapper;
+    private MyBaseMapper<T> mapper;
 
     public MyBaseMapper<T> getMapper() {
         return mapper;

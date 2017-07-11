@@ -7,14 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Michael on 2017/7/8.
+ *  RESTFUL 测试
  */
 @RestController
 @RequestMapping(value = "/test")
 public class TestController {
-
-    /**
-     *  get post put delete 测试
-     */
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String testGet(@PathVariable("id") String id) {

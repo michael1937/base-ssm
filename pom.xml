@@ -29,21 +29,6 @@
 
     </properties>
 
-    <!--<repositories>-->
-    <!--&lt;!&ndash;<repository>&ndash;&gt;-->
-    <!--&lt;!&ndash;<id>kanglefu</id>&ndash;&gt;-->
-    <!--&lt;!&ndash;<url>http://192.168.127.101:8081/nexus/content/groups/public/</url>&ndash;&gt;-->
-    <!--&lt;!&ndash;</repository>&ndash;&gt;-->
-    <!--<mirrors>-->
-    <!--<mirror>-->
-    <!--<id>alimaven</id>-->
-    <!--<name>aliyun maven</name>-->
-    <!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
-    <!--<mirrorOf>central</mirrorOf>-->
-    <!--</mirror>-->
-    <!--</mirrors>-->
-    <!--</repositories>-->
-
     <dependencies>
 
         <!-- Spring -->
@@ -56,6 +41,14 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- Spring MVC -->
@@ -171,11 +164,11 @@
         <!-- Spring-session:redis END -->
 
         <!-- fdfs依赖 -->
-        <dependency>
-            <groupId>org.csource</groupId>
-            <artifactId>fastdfs-client-java</artifactId>
-            <version>1.25</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.csource</groupId>-->
+        <!--<artifactId>fastdfs-client-java</artifactId>-->
+        <!--<version>1.25</version>-->
+        <!--</dependency>-->
 
         <!-- junit 测试 -->
         <dependency>
@@ -184,8 +177,38 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!-- servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>base-ssm</finalName>
+        <plugins>
+            <!-- 编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                    <showWarnings>false</showWarnings>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>

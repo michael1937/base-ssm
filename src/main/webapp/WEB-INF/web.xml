@@ -11,11 +11,6 @@
         <param-value>classpath*:spring/*.xml</param-value>
     </context-param>
 
-    <context-param>
-        <param-name>appconfig</param-name>
-        <param-value>classpath:/appconfig.properties</param-value>
-    </context-param>
-
     <!-- Spring监听器 Spring的ApplicationContext 载入 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -26,23 +21,12 @@
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>
 
-    <!-- 可以使用RequestContextHolder.currentRequestAttributes() 获取到请求的attr -->
+    <!-- 如果有第三方的Servlet需要处理，可以加上，DispatcherServlet 当前已经够用 -->
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
 
-    <!-- 浏览器不支持put,delete等method,由该filter将/xxx?_method=delete转换为标准的http delete方法 -->
-    <!--<filter>-->
-        <!--<filter-name>hiddenHttpMethodFilter</filter-name>-->
-        <!--<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>-->
-    <!--</filter>-->
-
-    <!--<filter-mapping>-->
-        <!--<filter-name>hiddenHttpMethodFilter</filter-name>-->
-        <!--<url-pattern>/*</url-pattern>-->
-    <!--</filter-mapping>-->
-
-    <!-- Character Encoding filter -->
+    <!-- 编码过滤器. 如果在tomcat中使用中文还是会有乱码时，修改tomcat编码为UTF-8(默认为ISO-8859-1)即可 -->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -60,9 +44,25 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!-- 淘宝连接池管理 -->
     <servlet>
         <servlet-name>DruidStatView</servlet-name>
         <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+        <init-param>
+            <!-- 允许清空统计数据 -->
+            <param-name>resetEnable</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <!-- 用户名 -->
+            <param-name>loginUsername</param-name>
+            <param-value>admin</param-value>
+        </init-param>
+        <init-param>
+            <!-- 密码 -->
+            <param-name>loginPassword</param-name>
+            <param-value>password</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>DruidStatView</servlet-name>
