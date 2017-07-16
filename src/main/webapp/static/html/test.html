@@ -12,13 +12,13 @@
 
 <script src="/static/plugins/jquery/jquery-1.11.3.min.js"></script>
 <script>
-    var URL = "/test/123456789";
+    var URL = "/test/我的";
     function doGet() {
         $.ajax({
             url : URL,
             type : "GET",
             success : function (data) {
-                alert(data);
+                alert(JSON.stringify(data));
             }
         });
     }
@@ -27,7 +27,7 @@
             url : URL,
             type : "POST",
             success : function (data) {
-                alert(data);
+                alert(JSON.stringify(data));
             }
         });
     }
@@ -36,7 +36,7 @@
             url : URL,
             type : "PUT",
             success : function (data) {
-                alert(data);
+                alert(JSON.stringify(data));
             }
         });
     }
@@ -45,7 +45,7 @@
             url : URL,
             type : "DELETE",
             success : function (data) {
-                alert(data);
+                alert(JSON.stringify(data));
             }
         });
     }

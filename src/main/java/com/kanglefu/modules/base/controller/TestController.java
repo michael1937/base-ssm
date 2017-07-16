@@ -1,11 +1,15 @@
 package com.kanglefu.modules.base.controller;
 
+import com.kanglefu.modules.base.controller.result.Result;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by Michael on 2017/7/8.
@@ -19,25 +23,31 @@ public class TestController {
      *  get post put delete 测试
      *  好像都可以用
      */
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String testGet(@PathVariable("id") String id,HttpServletResponse response) {
-        response.setContentType("application/json;charset=UTF-8");
-        return "{\"GET_value\":\"" + id + "\"}";
+    public Result testGet(@PathVariable("id") String id, HttpServletResponse response) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("GET_value",id);
+        return Result.success().setData(map);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public String testPost(@PathVariable("id") String id) {
-        return "{\"POST_value\":\"" + id + "\"}";
+    public Result testPost(@PathVariable("id") String id) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("POST_value",id);
+        return Result.success().setData(map);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public String testPut(@PathVariable("id") String id) {
-        return "{\"PUT_value\":\"" + id + "\"}";
+    public Result testPut(@PathVariable("id") String id) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("PUT_value",id);
+        return Result.success().setData(map);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String testDELETE(@PathVariable("id") String id) {
-        return "{\"DELETE_value\":\"" + id + "\"}";
+    public Result testDELETE(@PathVariable("id") String id) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("DELETE_value",id);
+        return Result.success().setData(map);
     }
 }

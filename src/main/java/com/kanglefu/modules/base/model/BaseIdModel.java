@@ -9,7 +9,9 @@ import java.io.Serializable;
 /**
  * Created by Michael on 2017/7/8.
  */
-public abstract class BaseIdModel<T,PK extends Serializable> {
+public abstract class BaseIdModel<T,PK extends Serializable> implements Serializable{
+
+    private static final long serialVersionUID = 2024722515392807245L;
 
     /**
      *  表主键
