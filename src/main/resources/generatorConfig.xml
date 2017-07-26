@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <!-- 代码生成配置文件 -->
-    <properties resource="props/generator.properties"/>
+    <properties resource="generator.properties"/>
 
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <property name="beginningDelimiter" value="`"/>

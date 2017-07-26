@@ -35,14 +35,6 @@ public class UserService extends BaseService<User> implements IUserService {
         }
         //分页查询
         PageHelper.startPage(pageNo, pageSize);
-
-        User user1 = new User("再测试一下");
-        save(user1);
-//        int i = 1/0;
-
-        User user2 = new User("再测试一下2");
-
-        save(user2);
         return getListByExample(example);
     }
 
