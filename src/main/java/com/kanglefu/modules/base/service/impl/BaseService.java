@@ -3,15 +3,18 @@ package com.kanglefu.modules.base.service.impl;
 import com.kanglefu.modules.base.mapper.MyBaseMapper;
 import com.kanglefu.modules.base.service.IBaseService;
 import org.apache.ibatis.session.RowBounds;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
 /**
  * Created by Michael on 2017/7/8.
+ * 基础Service 接口实现 基于 MyBaseMapper 的实现
  */
 public abstract class BaseService<T> implements IBaseService<T> {
+
+    protected Logger logger = org.apache.log4j.Logger.getLogger(getClass());
 
     @Autowired
     private MyBaseMapper<T> mapper;
@@ -65,11 +68,11 @@ public abstract class BaseService<T> implements IBaseService<T> {
     }
 
     public int updateByExample(T entity, Object example) {
-        return mapper.updateByExample(entity,example);
+        return mapper.updateByExample(entity, example);
     }
 
     public int updateByExampleNotNull(T entity, Object example) {
-        return mapper.updateByExampleSelective(entity,example);
+        return mapper.updateByExampleSelective(entity, example);
     }
 
     public List<T> getList(T entity) {
@@ -85,14 +88,14 @@ public abstract class BaseService<T> implements IBaseService<T> {
     }
 
     public List<T> getListByRowBounds(T entity, RowBounds rowBounds) {
-        return mapper.selectByRowBounds(entity,rowBounds);
+        return mapper.selectByRowBounds(entity, rowBounds);
     }
 
     public List<T> getListByExampleAndRowBounds(Object example, RowBounds rowBounds) {
-        return mapper.selectByExampleAndRowBounds(example,rowBounds);
+        return mapper.selectByExampleAndRowBounds(example, rowBounds);
     }
 
-    public List<T> getByPKS(String keys){
+    public List<T> getByPKS(String keys) {
         return mapper.selectByIds(keys);
     }
 

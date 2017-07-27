@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface UserMapper extends MyBaseMapper<User> {
 
-    List<UserVo> getUserVoListI(User user);
+    List<UserVo> getUserVoList(User user);
 }

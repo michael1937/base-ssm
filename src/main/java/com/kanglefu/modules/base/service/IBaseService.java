@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by Michael on 2017/7/8.
+ *  基础Service 接口 基于 MyBaseMapper
  */
 public interface IBaseService<T> {
 
@@ -141,6 +142,4 @@ public interface IBaseService<T> {
      * @return 查询总数是否 > 0
      */
     boolean isExisis(Object key);
-
-
 }

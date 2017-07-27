@@ -12,19 +12,18 @@ public class JavaClass extends TableClass {
     private String author;
 
     /**
-     *  对应的JAVA名
-     */
-    private String javaName;
-
-    /**
      *  日期
      */
     private String date;
 
     /**
-     *  包名
+     *  package
      */
-    private String packageName;
+    private String packageModel;
+    private String packageMapper;
+    private String packageServiceI;
+    private String packageService;
+    private String packageController;
 
     public String getAuthor() {
         return author;
@@ -32,14 +31,6 @@ public class JavaClass extends TableClass {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getJavaName() {
-        return javaName;
-    }
-
-    public void setJavaName(String javaName) {
-        this.javaName = javaName;
     }
 
     public String getDate() {
@@ -50,11 +41,43 @@ public class JavaClass extends TableClass {
         this.date = date;
     }
 
-    public String getPackageName() {
-        return packageName;
+    public String getPackageModel() {
+        return packageModel;
     }
 
-    public void setPackageName(String packageName) {
-        this.packageName = packageName;
+    public void setPackageModel(String packageModel) {
+        this.packageModel = packageModel;
+    }
+
+    public String getPackageMapper() {
+        return packageMapper;
+    }
+
+    public void setPackageMapper(String packageMapper) {
+        this.packageMapper = packageMapper;
+    }
+
+    public String getPackageServiceI() {
+        return packageServiceI;
+    }
+
+    public void setPackageServiceI(String packageServiceI) {
+        this.packageServiceI = packageServiceI;
+    }
+
+    public String getPackageService() {
+        return packageService;
+    }
+
+    public void setPackageService(String packageService) {
+        this.packageService = packageService;
+    }
+
+    public String getPackageController() {
+        return packageController;
+    }
+
+    public void setPackageController(String packageController) {
+        this.packageController = packageController;
     }
 }

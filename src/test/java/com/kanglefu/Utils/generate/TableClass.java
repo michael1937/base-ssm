@@ -14,6 +14,11 @@ public class TableClass {
     private String tableName;
 
     /**
+     *  对应的JAVA名
+     */
+    private String javaName;
+
+    /**
      *  表注释
      */
     private String tableRemark;
@@ -29,6 +34,14 @@ public class TableClass {
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
+    }
+
+    public String getJavaName() {
+        return javaName;
+    }
+
+    public void setJavaName(String javaName) {
+        this.javaName = javaName;
     }
 
     public String getTableRemark() {

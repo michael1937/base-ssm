@@ -1,14 +1,15 @@
 package com.kanglefu.modules.demo.model;
 
-import com.kanglefu.modules.base.model.BaseIdModel;
+import com.kanglefu.modules.base.model.BaseIdStringModel;
 
 import javax.persistence.Table;
 
 /**
+ *  演示实体
  * Created by Michael on 2017/7/8.
  */
-@Table(name = "m_user")
-public class User extends BaseIdModel<User, String> {
+@Table(name = "x_demo_user")
+public class User extends BaseIdStringModel {
 
     private String name;
 

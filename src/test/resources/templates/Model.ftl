@@ -1,9 +1,11 @@
-package ${packageName};
+package ${packageModel};
 
 import com.kanglefu.modules.base.model.CommonBaseModel;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
+import java.sql.Time;
 
 
 /**
@@ -20,20 +22,106 @@ public class ${javaName} extends CommonBaseModel {
     /**
     * ${model.columnComment!}
     */
-    <#if (model.columnType = 'VARCHAR' || model.columnType = 'text')>
+    <#if (model.columnType = 'BIT' || model.columnType = 'TINYINT' || model.columnType = 'SMALLINT' || model.columnType = 'MEDIUMINT' || model.columnType = 'INT' || model.columnType = 'INTEGER')>
+    @Column(name = "${model.columnName}")
+    private Integer ${model.javaPropertyName};
+    </#if>
+    <#if (model.columnType = 'BIGINT')>
+    @Column(name = "${model.columnName}")
+    private Long ${model.javaPropertyName};
+    </#if>
+    <#if (model.columnType = 'FLOAT' || model.columnType = 'DOUBLE')>
+    @Column(name = "${model.columnName}")
+    private Double ${model.javaPropertyName};
+    </#if>
+    <#if (model.columnType = 'DECIMAL')>
+    @Column(name = "${model.columnName}")
+    private BigDecimal ${model.javaPropertyName};
+    </#if>
+    <#if (model.columnType = 'TIME')>
+    @Column(name = "${model.columnName}")
+    private Time ${model.javaPropertyName};
+    </#if>
+    <#if (model.columnType = 'YEAR' || model.columnType = 'DATE' || model.columnType = 'DATETIME' || model.columnType = 'TIMESTAMP')>
+    @Column(name = "${model.columnName}")
+    private Date ${model.javaPropertyName};
+    </#if>
+    <#if (model.columnType = 'CHAR' || model.columnType = 'VARCHAR' || model.columnType = 'TINYTEXT' || model.columnType = 'TEXT' || model.columnType = 'MEDIUMTEXT' || model.columnType = 'LONGTEXT')>
     @Column(name = "${model.columnName}")
     private String ${model.javaPropertyName};
     </#if>
-    <#if model.columnType = 'DATETIME' >
+    <#if (model.columnType = 'TINYBLOB' || model.columnType = 'BLOB' || model.columnType = 'MEDIUMBLOB' || model.columnType = 'LONGBLOB')>
     @Column(name = "${model.columnName}")
-    private Date ${model.javaPropertyName};
+    private byte[] ${model.javaPropertyName};
     </#if>
     </#list>
 </#if>
 
 <#if columns?exists>
     <#list columns as model>
-    <#if (model.columnType = 'VARCHAR' || model.columnType = 'text')>
+    <#if (model.columnType = 'BIT' || model.columnType = 'TINYINT' || model.columnType = 'SMALLINT' || model.columnType = 'MEDIUMINT' || model.columnType = 'INT' || model.columnType = 'INTEGER')>
+    <#--<#if (model.columnType = 'VARCHAR' || model.columnType = 'text')>-->
+    public Integer get${model.javaPropertyName?cap_first}() {
+        return this.${model.javaPropertyName};
+    }
+
+    public void set${model.javaPropertyName?cap_first}(Integer ${model.javaPropertyName}) {
+        this.${model.javaPropertyName} = ${model.javaPropertyName};
+    }
+
+    </#if>
+    <#if (model.columnType = 'BIGINT')>
+    public Long get${model.javaPropertyName?cap_first}() {
+        return this.${model.javaPropertyName};
+    }
+
+    public void set${model.javaPropertyName?cap_first}(Long ${model.javaPropertyName}) {
+        this.${model.javaPropertyName} = ${model.javaPropertyName};
+    }
+
+    </#if>
+    <#if (model.columnType = 'FLOAT' || model.columnType = 'DOUBLE')>
+    <#--<#if (model.columnType = 'VARCHAR' || model.columnType = 'text')>-->
+    public Double get${model.javaPropertyName?cap_first}() {
+    return this.${model.javaPropertyName};
+    }
+
+    public void set${model.javaPropertyName?cap_first}(Double ${model.javaPropertyName}) {
+    this.${model.javaPropertyName} = ${model.javaPropertyName};
+    }
+
+    </#if>
+    <#if (model.columnType = 'DECIMAL')>
+    public BigDecimal get${model.javaPropertyName?cap_first}() {
+    return this.${model.javaPropertyName};
+    }
+
+    public void set${model.javaPropertyName?cap_first}(BigDecimal ${model.javaPropertyName}) {
+    this.${model.javaPropertyName} = ${model.javaPropertyName};
+    }
+
+    </#if>
+    <#if (model.columnType = 'TIME')>
+    public Time get${model.javaPropertyName?cap_first}() {
+    return this.${model.javaPropertyName};
+    }
+
+    public void set${model.javaPropertyName?cap_first}(Time ${model.javaPropertyName}) {
+    this.${model.javaPropertyName} = ${model.javaPropertyName};
+    }
+
+    </#if>
+    <#if (model.columnType = 'YEAR' || model.columnType = 'DATE' || model.columnType = 'DATETIME' || model.columnType = 'TIMESTAMP')>
+    public Date get${model.javaPropertyName?cap_first}() {
+    return this.${model.javaPropertyName};
+    }
+
+    public void set${model.javaPropertyName?cap_first}(Date ${model.javaPropertyName}) {
+    this.${model.javaPropertyName} = ${model.javaPropertyName};
+    }
+
+    </#if>
+    <#if (model.columnType = 'CHAR' || model.columnType = 'VARCHAR' || model.columnType = 'TINYTEXT' || model.columnType = 'TEXT' || model.columnType = 'MEDIUMTEXT' || model.columnType = 'LONGTEXT')>
     public String get${model.javaPropertyName?cap_first}() {
     return this.${model.javaPropertyName};
     }
@@ -43,14 +131,15 @@ public class ${javaName} extends CommonBaseModel {
     }
 
     </#if>
-    <#if model.columnType = 'DATETIME' >
-    public Date get${model.javaPropertyName?cap_first}() {
+    <#if (model.columnType = 'TINYBLOB' || model.columnType = 'BLOB' || model.columnType = 'MEDIUMBLOB' || model.columnType = 'LONGBLOB')>
+    public byte[] get${model.javaPropertyName?cap_first}() {
     return this.${model.javaPropertyName};
     }
 
-    public void set${model.javaPropertyName?cap_first}(Date ${model.javaPropertyName}) {
+    public void set${model.javaPropertyName?cap_first}(byte[] ${model.javaPropertyName}) {
     this.${model.javaPropertyName} = ${model.javaPropertyName};
     }
+
     </#if>
     </#list>
 </#if>

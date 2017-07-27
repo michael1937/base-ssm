@@ -9,18 +9,18 @@ import com.kanglefu.modules.demo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.util.StringUtil;
 
 import java.util.List;
 
 /**
- * Created by Michael on 2017/7/8.
+ * Created by Michael on 2017/7/8
  */
 @Service
-@Transactional(rollbackFor = Exception.class)
+@Transactional(rollbackFor = Exception.class,readOnly = true)
 public class UserService extends BaseService<User> implements IUserService {
+
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
@@ -35,10 +35,11 @@ public class UserService extends BaseService<User> implements IUserService {
         }
         //分页查询
         PageHelper.startPage(pageNo, pageSize);
+
         return getListByExample(example);
     }
 
     public List<UserVo> getUserVoList(User user) {
-        return userMapper.getUserVoListI(user);
+        return userMapper.getUserVoList(user);
     }
 }
