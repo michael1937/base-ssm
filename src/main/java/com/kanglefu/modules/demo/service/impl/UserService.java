@@ -7,6 +7,7 @@ import com.kanglefu.modules.demo.model.User;
 import com.kanglefu.modules.demo.model.vo.UserVo;
 import com.kanglefu.modules.demo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
@@ -26,6 +27,10 @@ public class UserService extends BaseService<User> implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     *  缓存示例
+     */
+    @Cacheable(value = {"test"},key = "'currentUser:user_' + #user.name",condition = "null != #user.name")
     public List<User> getByUser(User user, int pageNo, int pageSize) {
 
         Example example = new Example(User.class);
